@@ -425,9 +425,9 @@ footer {
     pointer-events: none;
 }
 .connect-icons a:hover {
-    background: #238636;
-    box-shadow: 0 4px 16px #23863644;
-    border: 1.5px solid #58a6ff;
+    background: #0390eea8;
+    box-shadow: 0 4px 16px #0754b92a;
+    border: 1.5px solid #6fb2ff;
 }
 .connect-icons a:hover::after {
     box-shadow: 0 0 16px 6px #58a6ff44;

@@ -11,7 +11,6 @@
     <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16x16.png">
-    <link rel="manifest" href="assets/img/site.webmanifest">
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
     <link rel="icon" type="image/png" sizes="192x192" href="assets/img/android-chrome-192x192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="assets/img/android-chrome-512x512.png">
@@ -41,10 +40,41 @@
             <h2>About Me</h2>
             <p class="about-subtitle">Exploring the Universe of Code</p>
             <p>Hello! I'm Meherab, a passionate developer focused on building modern, user-friendly web applications and exploring cybersecurity and low-level programming. I believe in turning ideas into code and code into reality.</p>
-            <div class="github-stats">
-                <img src="https://github-readme-stats.vercel.app/api?username=MisterMeherab&show_icons=true&theme=github_dark" alt="GitHub Stats" style="max-width:100%;border-radius:12px;margin:1rem 0;">
+        </section>
+        <section id="github-stats" class="card fade-in">
+            <h2>GitHub Stats</h2>
+            <button id="toggle-github-stats" class="cta-btn" style="margin-bottom:1rem;">Show GitHub Stats</button>
+            <div class="github-stats" id="github-stats-content" style="display:none;">
+                <img src="https://github-readme-stats.vercel.app/api?username=MisterMeherab&show_icons=true&include_all_commits=false&theme=github_dark&show=prs,issues,followers,reviews,discussions_started,discussions_answered,prs_merged,prs_merged_percentage" alt="GitHub Stats (Commits)" style="max-width:100%;border-radius:12px;margin:1rem 0;">
+                <img src="https://github-readme-stats.vercel.app/api?username=MisterMeherab&show_icons=true&rank_icon=percentile&theme=github_dark" alt="GitHub Stats (Rank)" style="max-width:100%;border-radius:12px;margin:1rem 0;">
                 <img src="https://streak-stats.demolab.com?user=MisterMeherab&theme=github-dark&hide_border=true" alt="GitHub Streak" style="max-width:100%;border-radius:12px;margin:1rem 0;">
+                <img src="https://github-readme-activity-graph.vercel.app/graph?username=MisterMeherab&theme=github-compact" alt="GitHub Contribution Calendar" style="max-width:100%;border-radius:12px;margin:1rem 0;">
             </div>
+            <script>
+            const toggleBtn = document.getElementById('toggle-github-stats');
+            const statsContent = document.getElementById('github-stats-content');
+            let statsVisible = false;
+
+            toggleBtn.addEventListener('click', function() {
+                if (!statsVisible) {
+                    statsContent.style.display = 'block';
+                    // Force reflow for transition
+                    void statsContent.offsetWidth;
+                    statsContent.classList.add('visible');
+                    toggleBtn.textContent = 'Hide GitHub Stats';
+                    statsVisible = true;
+                } else {
+                    statsContent.classList.remove('visible');
+                    toggleBtn.textContent = 'Show GitHub Stats';
+                    statsVisible = false;
+                }
+            });
+            statsContent.addEventListener('transitionend', function(e) {
+                if (!statsVisible && e.propertyName === 'opacity' && getComputedStyle(statsContent).opacity === '0') {
+                    statsContent.style.display = 'none';
+                }
+            });
+            </script>
         </section>
         <section id="projects" class="card fade-in">
             <h2>Featured Projects</h2>

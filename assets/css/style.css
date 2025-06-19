@@ -536,6 +536,15 @@ footer {
         transform: scale(0.7) rotate(60deg);
     }
 }
+.github-stats {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    transition: opacity 0.5s cubic-bezier(.39,.575,.565,1), transform 0.5s cubic-bezier(.39,.575,.565,1);
+}
+.github-stats.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
 @media (max-width: 700px) {
     .navbar {
         flex-direction: column;

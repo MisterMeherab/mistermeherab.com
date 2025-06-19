@@ -1,4 +1,4 @@
-// script.js - Clean, modern, and well-documented
+// script.js - Clean, modern, and efficient (reduced animation)
 
 document.addEventListener('DOMContentLoaded', function() {
     // --- Smooth Scroll for Navigation ---
@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // --- Fade-in Animation on Scroll ---
-    const faders = document.querySelectorAll('.fade-in, .card.fade-in');
+    // --- Fade-in Animation on Scroll (only for .fade-in, not every card) ---
+    const faders = document.querySelectorAll('.fade-in');
     const appearOnScroll = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (!entry.isIntersecting) return;
@@ -47,10 +47,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- Connect Icons: Pop-in, Float, Sparkle ---
+    // --- Connect Icons: Simple Pop-in Only ---
     const connectIcons = document.querySelectorAll('.connect-icons .icon-anim');
     connectIcons.forEach((icon, i) => {
-        // Pop-in effect
+        // Simple pop-in effect
         icon.style.opacity = 0;
         icon.style.transform = 'scale(0.7)';
         setTimeout(() => {
@@ -58,29 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
             icon.style.opacity = 1;
             icon.style.transform = 'scale(1)';
         }, 400 + i * 80);
-        // Floating animation
-        setTimeout(() => {
-            icon.animate([
-                { transform: 'translateY(0px)' },
-                { transform: 'translateY(-8px)' },
-                { transform: 'translateY(0px)' }
-            ], {
-                duration: 2600 + i * 100,
-                iterations: Infinity,
-                direction: 'alternate',
-                easing: 'ease-in-out',
-                delay: i * 80
-            });
-        }, 800 + i * 60);
-        // Sparkle on hover
-        icon.addEventListener('mouseenter', () => {
-            let sparkle = document.createElement('span');
-            sparkle.className = 'icon-sparkle';
-            sparkle.style.left = Math.random() * 60 + '%';
-            sparkle.style.top = Math.random() * 60 + '%';
-            icon.appendChild(sparkle);
-            setTimeout(() => sparkle.remove(), 700);
-        });
     });
 
     // --- Accessibility: Add aria-labels to Social Links ---
